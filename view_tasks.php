@@ -27,7 +27,7 @@
                 <div class="row">
 
                     <div class="col-md-12 mb-3">
-                        <label for="title" class="form-label">title</label>
+                        <label for="title" class="form-label">Kitle</label>
                         <input type="text" class="form-control" name="title"
                             value="<?= $view_task_query['title']; ?>" readonly>
                     </div>
