@@ -9,17 +9,18 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title text-center">Task Management System</h5>
+              <h2 class="card-title text-center">Task Management System</h2>
 
               <a type = "button" href="create_task.php" style="float: right;" class="btn btn-primary">Add Task</a>
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
-                  <tr>
+                  <tr class="text-center">
                     <th class="col">Title</th>
                     <th class="col">Description</th>
                     <th class="col">Priority</th>
                     <th class="col">Due Date</th>
+                    <th class="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -33,21 +34,18 @@
                 foreach($query_run as $row)
                 {
                 ?>
-                    <tr>
-                <td><?= $row['title']; ?></td>
-                <td><?= $row['description']; ?></td>
-                <td><?= $row['priority']; ?></td>
-                <td><?= $row['due_date']; ?></td>
+                    <tr class="text-center">
+                      <td><?= $row['title']; ?></td>
+                      <td><?= $row['description']; ?></td>
+                      <td><?= $row['priority']; ?></td>
+                      <td><?= $row['due_date']; ?></td>
 
-                <td>
-                <a type="button" class="button btn btn-outline-primary text-center" href="view.php?id=<?=$row['id'];?>">View</a>
-                <a type="button" class="button btn btn-outline-warning text-center" href="edit_task.php?id=<?=$row['id'];?>">Edit</a>
-                
-                <form action="process.php" method="POST">
-                <input type="hidden" name="id" value="<?= $row['id']; ?>">
-                <button type="submit" class="button btn btn-outline-danger text-center">Delete</button>
-                </form>
-              </td>
+                      <td>
+                        <a type="button" class="button btn btn-outline-success" href="view_tasks.php?id=<?=$row['id'];?>">View</a>
+                        <a type="button" class="button btn btn-outline-warning" href="edit_task.php?id=<?=$row['id'];?>">Edit</a>
+                        <a type="submit" class="button btn btn-outline-danger" href="delete_tasks.php?id=<?=$row['id'];?>">Delete</a>
+                        </div>
+                      </td>
                     </tr>
 
                     <?php

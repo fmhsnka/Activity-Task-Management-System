@@ -8,50 +8,50 @@
         <div class="col-lg-9">
 
         <?php
-        if(isset($_GET['id']))
-        {
-            $id = $_GET['id'];
-            $edit_task_query = "SELECT * FROM `tasks` WHERE `id` = '$id'";
-            $edit_task_result = mysqli_query($con, $edit_task_query);
-
-            if(mysqli_num_rows($edit_task_result) > 0)
+            if(isset($_GET['id']))
             {
-                foreach($edit_task_result as $edit_task_query)
+                $id = $_GET['id'];
+                $edit_task_query = "SELECT * FROM `tasks` WHERE `id` = '$id'";
+                $edit_task_result = mysqli_query($con, $edit_task_query);
+
+                if(mysqli_num_rows($edit_task_result) > 0)
                 {
-                ?>
+                    foreach($edit_task_result as $edit_task_query)
+                    {
+        ?>
 
             <form action="process.php" method="POST">
 
             <input type="hidden" name="id" value="<?=$edit_task_query['id'];?>">
 
                 <div class="row">
-                <div class="col-md-12 mb-3">
-                        <label for="id" class="form-label">ID</label>
-                        <input type="text" class="form-control" name="id">
-                    </div>
 
                     <div class="col-md-12 mb-3">
                         <label for="title" class="form-label">title</label>
                         <input type="text" class="form-control" name="title"
-                            value="<?= $edit_task_query[`title`]; ?>">
+                            value="<?= $edit_task_query['title']; ?>">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="description" class="form-label">Description</label>
                         <input type="text" class="form-control" name="description"
-                            value="<?= $edit_task_query[`description`]; ?>">
+                            value="<?= $edit_task_query['description']; ?>">
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="priority" class="form-label">Priority</label>
-                        <input type="text" class="form-control" name="priority"
-                            value="<?= $edit_task_query[`priority`]; ?>">
+                        <select name="priority" class="form-control">
+                                <option value="" disabled>Select Priority</option>
+                                <option value="Low" <?= ($edit_task_query['priority'] == 'Low') ? 'selected':'';?>>Low</option>
+                                <option value="Medium" <?= ($edit_task_query['priority'] == 'Medium') ? 'selected':'';?>>Medium</option>
+                                <option value="High" <?= ($edit_task_query['priority'] == 'High') ? 'selected':'';?>>High</option>
+                            </select>
                     </div>
 
                     <div class="col-md-4 mb-3">
                         <label for="due_date" class="form-label">Due Date</label>
                         <input type="date" class="form-control" name="due_date"
-                            value="<?= $edit_task_query[`due_date`]; ?>">
+                            value="<?= $edit_task_query['due_date']; ?>">
                     </div>
 
                     <div class="col-md-12 mb-3 text-center">
@@ -72,7 +72,7 @@
                 <?php
             }
         }
-?>
+    ?>
 </div>
 
 <?php
