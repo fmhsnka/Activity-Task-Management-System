@@ -5,7 +5,7 @@ include("config.php");
 
 if (isset($_GET['id'])) {
     
-    $id = $_GET['id'];
+    // $id = $_GET['id'];
 
     $delete_task_query = "DELETE FROM `tasks` WHERE id = '$id'";
     $delete_task_result = mysqli_query($con, $delete_task_query);
